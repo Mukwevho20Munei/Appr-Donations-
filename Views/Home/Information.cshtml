@@ -1,0 +1,93 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Home Page";
+    string[] Tags = new string[] { "ID",
+                                            "Heading",
+                                            "Start Date",
+                                            "End Date",
+                                            "Location",
+                                            "Description",
+                                            "Required aid",
+                                            "Number of Products",
+                                            "Product Category",
+                                            "DistributedAmount"};
+}
+<body>
+  
+
+    <h1>Information </h1>
+    <br />
+    <h2>Active Disasters</h2>
+
+    <div class="table table-bordered tabel-hover">
+        <table>
+            <thead>
+                <tr>
+                    @{
+                        foreach (var title in Tags)
+                        {
+                            <th>
+                                @title
+                            </th>
+                        }
+                    }
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var tag in Model)
+                        {
+                            <tr>
+                                <td>@tag.id</td>
+                                <td>@tag.Heading</td>
+                                <td>@tag.StartDate</td>
+                                <td>@tag.EndDate</td>
+                                <td>@tag.Location</td>
+                                <td>@tag.Description</td>
+                                <td>@tag.Aid</td>
+                                <td>@tag.numberOfProd</td>
+                                <td>@tag.category</td>
+                                <td>@tag.DistributedAmount</td>
+
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <h2>Total Monetary Donations Received</h2>
+    @{
+        foreach (var tag in Model)
+        {
+            <h2>@tag.DistributedAmount</h2>
+        }
+    }
+
+    <h2>Total Number of Goods Recieved</h2>
+    @{
+        foreach (var tag in Model)
+        {
+            <h2>@tag.numberOfProd</h2>
+        }
+    }
+
+
+</body>
+
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+                   window.onload = function () {
+                       alert("@ViewBag.Message")
+                   }
+    </script>
+}

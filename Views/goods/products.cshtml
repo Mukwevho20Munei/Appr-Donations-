@@ -1,0 +1,52 @@
+﻿@model Appr_Munei.Models.goods
+
+<h4>goods</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="products">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="category" class="control-label"></label>
+                <input asp-for="category" class="form-control" />
+                <span asp-validation-for="category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfProds" class="control-label"></label>
+                <input asp-for="NumberOfProds" class="form-control" />
+                <span asp-validation-for="NumberOfProds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Donor" class="control-label"></label>
+                <input asp-for="Donor" class="form-control" />
+                <span asp-validation-for="Donor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.Message")
+                        }
+    </script>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

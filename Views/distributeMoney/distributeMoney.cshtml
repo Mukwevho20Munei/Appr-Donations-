@@ -1,0 +1,42 @@
+﻿@model Appr_Munei.Models.DistributeMoneyToDisaster
+
+
+<h4>Distribute Money To Disaster</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("distributeMoney", "distributeMoney", FormMethod.Post))
+        {
+            <form asp-action="distributeMoney">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label class="control-label">Disaster table</label>
+                    @Html.DropDownListFor(t => t.moneyId, Model.DisasterTag, "Select", new { @class = "form-control" })
+                    <span asp-validation-for="moneyId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" class="form-control" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        }
+
+    </div>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.Message")
+                        }
+    </script>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
